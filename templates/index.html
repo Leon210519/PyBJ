@@ -7,24 +7,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div id="game">
+    <div class="table" id="game">
         <h1>Blackjack</h1>
-        <div id="bankroll">Bankroll: $<span id="bankroll-value"></span></div>
-        <div class="hand">
-            <h2>Dealer (<span id="dealer-value"></span>)</h2>
-            <div id="dealer-cards" class="cards"></div>
+
+        <div id="status" class="status">
+            <div>Bankroll: $<span id="bankroll-value"></span></div>
+            <div>Bet: $<span id="bet-value"></span></div>
+            <div id="message" class="message"></div>
         </div>
-        <div class="hand">
-            <h2>You (<span id="player-value"></span>)</h2>
-            <div id="player-cards" class="cards"></div>
+
+        <div class="hands">
+            <div class="hand dealer">
+                <h2>Dealer <span id="dealer-value" class="hand-value"></span></h2>
+                <div id="dealer-cards" class="cards"></div>
+            </div>
+            <div class="hand player">
+                <h2>You <span id="player-value" class="hand-value"></span></h2>
+                <div id="player-cards" class="cards"></div>
+            </div>
         </div>
-        <div id="controls">
+
+        <div id="controls" class="controls">
             <button id="deal-btn">Deal</button>
             <button id="hit-btn" disabled>Hit</button>
             <button id="stand-btn" disabled>Stand</button>
         </div>
-        <div id="message"></div>
     </div>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ async function post(action) {
 
 function render(state) {
     document.getElementById('bankroll-value').textContent = state.bankroll;
+    document.getElementById('bet-value').textContent = state.bet;
     const playerCards = document.getElementById('player-cards');
     const dealerCards = document.getElementById('dealer-cards');
     playerCards.innerHTML = '';
