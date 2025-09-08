@@ -56,6 +56,7 @@ def _current_state(*, hide_dealer: bool, message: str = ""):
             "value": d_total,
         },
         "bankroll": session.get("bankroll", START_BANKROLL),
+        "bet": BET_AMOUNT,
         "status": status,
         "message": message,
     }
