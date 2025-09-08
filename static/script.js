@@ -1,6 +1,13 @@
 async function post(action) {
-    const resp = await fetch('/' + action, {method: 'POST'});
-    return resp.json();
+    try {
+        const resp = await fetch('/' + action, { method: 'POST' });
+        if (resp.ok) {
+            return await resp.json();
+        }
+    } catch (err) {
+        console.error(err);
+    }
+    return { message: 'Network error', player: { cards: [] }, dealer: { cards: [] } };
 }
 
 function render(state) {
@@ -12,11 +19,13 @@ function render(state) {
     state.player.cards.forEach(c => {
         const img = document.createElement('img');
         img.src = c.image;
+        img.alt = c.code;
         playerCards.appendChild(img);
     });
     state.dealer.cards.forEach(c => {
         const img = document.createElement('img');
         img.src = c.image;
+        img.alt = c.code;
         dealerCards.appendChild(img);
     });
     document.getElementById('player-value').textContent = state.player.value || '';

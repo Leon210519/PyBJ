@@ -26,6 +26,14 @@ class Player:
 
 
 def hand_value(cards: List[Card]) -> Tuple[int, bool]:
+    """Return the Blackjack value for ``cards``.
+
+    The total is calculated with standard Blackjack rules where face cards
+    count as 10 and aces can count as 1 or 11.  The returned tuple contains
+    the numeric total and a boolean indicating whether the hand is *soft*
+    (i.e. at least one ace is counted as 11).
+    """
+
     total = 0
     aces = 0
     for c in cards:
@@ -37,20 +45,24 @@ def hand_value(cards: List[Card]) -> Tuple[int, bool]:
             aces += 1
         else:
             total += int(v)
+
     while total > 21 and aces:
         total -= 10
         aces -= 1
+
     is_soft = aces > 0 and total < 21
     return total, is_soft
 
 
 def should_dealer_draw(cards: List[Card]) -> bool:
-    total, is_soft = hand_value(cards)
-    if total < 17:
-        return True
-    if total == 17 and is_soft:
-        return False
-    return False
+    """Return ``True`` if the dealer should draw another card.
+
+    By default the dealer stands on all 17s, including soft 17.  The logic is
+    therefore simply a check that the total is below 17.
+    """
+
+    total, _ = hand_value(cards)
+    return total < 17
 
 
 def prompt_hit_or_stand() -> str:
