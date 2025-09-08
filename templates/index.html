@@ -5,10 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-family: 'Play', sans-serif;
+            background: radial-gradient(circle at center, #066b30 0%, #01270f 100%);
+        }
+        .table {
+            animation: fadeIn 1s ease-in-out;
+            backdrop-filter: blur(4px);
+        }
+        .cards img {
+            animation: popIn 0.3s ease-out;
+        }
+        .controls button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .controls button:hover:not(:disabled) {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
-    <div class="table" id="game">
-        <h1>Blackjack</h1>
+    <div class="table animate__animated animate__zoomIn" id="game">
+        <h1 class="animate__animated animate__fadeInDown">Blackjack</h1>
 
         <div id="status" class="status">
             <div>Bankroll: $<span id="bankroll-value"></span></div>
