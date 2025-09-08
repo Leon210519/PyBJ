@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="game">
+        <h1>Blackjack</h1>
+        <div id="bankroll">Bankroll: $<span id="bankroll-value"></span></div>
+        <div class="hand">
+            <h2>Dealer (<span id="dealer-value"></span>)</h2>
+            <div id="dealer-cards" class="cards"></div>
+        </div>
+        <div class="hand">
+            <h2>You (<span id="player-value"></span>)</h2>
+            <div id="player-cards" class="cards"></div>
+        </div>
+        <div id="controls">
+            <button id="deal-btn">Deal</button>
+            <button id="hit-btn" disabled>Hit</button>
+            <button id="stand-btn" disabled>Stand</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
