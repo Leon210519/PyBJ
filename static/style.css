@@ -1,0 +1,32 @@
+body {
+    background-color: #006400;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#game {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.cards img {
+    height: 120px;
+    margin: 5px;
+}
+
+#controls button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.hand {
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 20px;
+    margin-top: 10px;
+}
